@@ -45,6 +45,22 @@ class HomeController extends GetxController {
 
   void increment() => count.value++;
 
+  void clear() {
+    c100000.clear();
+    c75000.clear();
+    c50000.clear();
+    c20000.clear();
+    c10000.clear();
+    c5000.clear();
+    c2000.clear();
+    c1000.clear();
+    c500.clear();
+    c200.clear();
+    c100.clear();
+    count.value = 0;
+    formatCount.value = '';
+  }
+
   void calculate() {
     var total = 0;
     if (c100000.text != '') {

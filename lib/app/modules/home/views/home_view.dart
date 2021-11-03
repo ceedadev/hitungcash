@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 
 import 'package:get/get.dart';
 
@@ -11,7 +10,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CashCalc'),
+        title: Text('Hitung Cash'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -84,17 +83,46 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ],
               ),
-              Obx(() => Text(controller.formatCount.string)),
-              ElevatedButton(
-                onPressed: () {
-                  controller.calculate();
-                },
-                child: Text('Hitung'),
+              SizedBox(height: 16),
+              Obx(() => Text(
+                    controller.formatCount.string,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  )),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      controller.calculate();
+                    },
+                    child: Text('Hitung'),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.grey[800]),
+                    onPressed: () {
+                      controller.clear();
+                    },
+                    child: Text('Clear'),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.calculate),
+      //       label: 'Hitung',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.history),
+      //       label: 'History',
+      //     ),
+      //   ],
+      // ),
     );
   }
 
