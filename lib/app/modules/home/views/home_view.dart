@@ -94,9 +94,9 @@ class HomeView extends GetView<HomeController> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      controller.calculate();
+                      // TODO : Save to DB function call
                     },
-                    child: Text('Hitung'),
+                    child: Text('Simpan'),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.grey[800]),
@@ -161,6 +161,7 @@ class HomeView extends GetView<HomeController> {
         height: 42,
         margin: EdgeInsets.symmetric(vertical: 8),
         child: TextField(
+          onEditingComplete: this.controller.calculate,
           controller: controller,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           textAlignVertical: TextAlignVertical.top,
