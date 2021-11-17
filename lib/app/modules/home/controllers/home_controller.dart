@@ -18,6 +18,13 @@ class HomeController extends GetxController {
   final count = 0.obs;
   final formatCount = ''.obs;
 
+  //BottomNavBar
+  var tabIndex = 0;
+  void changeTabIndex(int value) {
+    tabIndex = value;
+    update();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -42,8 +49,6 @@ class HomeController extends GetxController {
     c200.dispose();
     c100.dispose();
   }
-
-  void increment() => count.value++;
 
   void clear() {
     c100000.clear();
@@ -107,12 +112,9 @@ class HomeController extends GetxController {
       final n100 = num.parse(c100.text);
       total += (100 * n100.toInt());
     }
-
     print(total);
     this.count.value = total;
-
     var formatter = NumberFormat('###,###,000');
-
     this.formatCount.value = formatter.format(total);
   }
 }
