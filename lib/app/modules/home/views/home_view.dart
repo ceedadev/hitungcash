@@ -28,14 +28,8 @@ class HomeView extends GetView<HomeController> {
                 },
                 defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                 children: [
-                  cashTableRow(
-                      denomination: '100.000',
-                      color: Colors.red,
-                      controller: controller.c100000),
-                  cashTableRow(
-                      denomination: '75.000',
-                      color: Colors.pink,
-                      controller: controller.c75000),
+                  cashTableRow(denomination: '100.000', color: Colors.red, controller: controller.c100000),
+                  cashTableRow(denomination: '75.000', color: Colors.pink, controller: controller.c75000),
                   cashTableRow(
                     denomination: '50.000',
                     color: Colors.blue,
@@ -136,18 +130,14 @@ class HomeView extends GetView<HomeController> {
       Container(
         height: 42,
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(blurRadius: 1, offset: Offset(0, 1), color: Colors.grey)
-          ],
+          boxShadow: [BoxShadow(blurRadius: 1, offset: Offset(0, 1), color: Colors.grey)],
           color: color,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Text(
             denomination,
-            style: TextStyle(
-                color: Colors.black.withOpacity(0.5),
-                fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.black.withOpacity(0.5), fontWeight: FontWeight.bold),
           ),
         ),
       ),
@@ -161,7 +151,10 @@ class HomeView extends GetView<HomeController> {
         height: 42,
         margin: EdgeInsets.symmetric(vertical: 8),
         child: TextField(
-          onEditingComplete: this.controller.calculate,
+          onChanged: (String value) async {
+            this.controller.calculate();
+          },
+          // onEditingComplete: this.controller.calculate,
           controller: controller,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           textAlignVertical: TextAlignVertical.top,
